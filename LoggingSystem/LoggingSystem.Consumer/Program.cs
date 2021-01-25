@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LoggingSystem.Loggers;
+using System;
+using System.IO;
 
 namespace LoggingSystem.Consumer
 {
@@ -6,6 +8,9 @@ namespace LoggingSystem.Consumer
     {
         static void Main(string[] args)
         {
+            ApplicationLogger.SetupLogging(new FileLogger(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)));
+
             int[] array = ConsoleHelper.ReadVector();
 
             ConsoleHelper.PrintVector(array);

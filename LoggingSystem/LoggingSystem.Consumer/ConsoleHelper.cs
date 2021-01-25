@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoggingSystem.Loggers;
+using System;
 
 namespace LoggingSystem.Consumer
 {
@@ -11,13 +12,14 @@ namespace LoggingSystem.Consumer
 
             if (!int.TryParse(size, out int result))
             {
-                // TODO: Log error: read string is not a number
+                ApplicationLogger.WriteLog(LogLevel.Warning, "Read string is not a number");
                 return new int[0];
             }
 
             if (result <= 0)
             {
-                // TODO: Log error: number is negative or zero
+                ApplicationLogger.WriteLog(LogLevel.Warning, "Read number is negative or zero");
+
                 return new int[0];
             }
 
@@ -29,12 +31,12 @@ namespace LoggingSystem.Consumer
                 string element = Console.ReadLine();
                 if (!int.TryParse(element, out int elementValue))
                 {
-                    // TODO: Log error: read string is not a number
+                    ApplicationLogger.WriteLog(LogLevel.Warning, "Read string is not a number");
                 }
 
                 if (result < 0)
                 {
-                    // TODO: Log error: number is negative
+                    ApplicationLogger.WriteLog(LogLevel.Warning, "Read number is negative");
                     result = 0;
                 }
 
@@ -48,13 +50,13 @@ namespace LoggingSystem.Consumer
         {
             if (array is null)
             {
-                // TODO: Log error: array is null;
+                ApplicationLogger.WriteLog(LogLevel.Warning, "Array is null");
                 return;
             }
 
             if (array.Length == 0)
             {
-                // TODO: Log error: array is empty;
+                ApplicationLogger.WriteLog(LogLevel.Warning, "Array is empty");
                 return;
             }
 
